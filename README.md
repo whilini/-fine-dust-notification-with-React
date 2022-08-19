@@ -1,1 +1,1 @@
-# -fine-dust-notification-with-React
+# 미세먼지 알리미
