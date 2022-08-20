@@ -1,24 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import AllRegions from './components/AllRegions';
+import FooterBar from './components/FooterBar';
+import Header from './components/Header';
+import Liked from './components/Liked';
+import MyRegion from './components/MyRegion';
+import styles from './scss/App.module.scss';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <div className={styles.app}>
+        <div className={styles.top}>
+          <Header />
+        </div>
+        <div className={styles.body}>
+          <Routes>
+            <Route path="/" element={<AllRegions />}></Route>
+            <Route path="myregion" element={<MyRegion />}></Route>
+            <Route path="liked" element={<Liked />}></Route>
+          </Routes>
+        </div>
+        <div className={styles.bottom}>
+          <FooterBar />
+        </div>
+      </div>
+    </BrowserRouter>
   );
 }
 
