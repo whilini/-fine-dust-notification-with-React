@@ -1,0 +1,14 @@
+.header {
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  padding-top: 15px;
+  .header__title {
+    font-family: 'UhBeeSe_hyun';
+    font-size: 23px;
+    font-weight: 500;
+    margin-left: 10px;
+  }
+}
