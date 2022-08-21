@@ -10,7 +10,6 @@ function AllRegions() {
   const dispatch = useDispatch();
   useEffect(() => {
     data.body.totalCount === 0 && dispatch(getDust());
-    console.log(data.body);
   }, [dispatch]);
 
   return (
@@ -37,4 +36,4 @@ function AllRegions() {
   );
 }
 
-export default AllRegions;
+export default React.memo(AllRegions);

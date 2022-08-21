@@ -1,10 +1,10 @@
+import React from 'react';
 import { TabBar } from 'antd-mobile';
 import {
   GlobalOutline,
   EnvironmentOutline,
   StarOutline,
 } from 'antd-mobile-icons';
-import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 function FooterBar() {
@@ -49,4 +49,4 @@ function FooterBar() {
   );
 }
 
-export default FooterBar;
+export default React.memo(FooterBar);

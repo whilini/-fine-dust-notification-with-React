@@ -1,0 +1,43 @@
+.app {
+  height: 100vh;
+  font-family: 'S-CoreDream-3Light', sans-serif;
+  transition: all 0.5s;
+  --adm-color-border: #f0f0f0;
+  .adm-switch-checkbox:before {
+    background-color: #e8e8e8;
+  }
+}
+
+.dark {
+  background-color: #1f1f1f;
+  color: #f0f0f0;
+  --adm-color-border: #434343;
+  .adm-empty-description {
+    margin-top: 8px;
+    font-size: var(--adm-font-size-6);
+    color: #8c8c8c;
+  }
+}
+
+@font-face {
+  font-family: 'ONE-Mobile-POP';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/ONE-Mobile-POP.woff')
+    format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'UhBeeSe_hyun';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_five@.2.0/UhBeeSe_hyun.woff')
+    format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'S-CoreDream-3Light';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff')
+    format('woff');
+  font-weight: normal;
+  font-style: normal;
+}

@@ -54,4 +54,4 @@ function RegioinCard({ dustdata }) {
   );
 }
 
-export default RegioinCard;
+export default React.memo(RegioinCard);

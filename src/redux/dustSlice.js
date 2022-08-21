@@ -1,7 +1,10 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
+import dustData from '../constants/dustData.json';
+
 const initialState = {
+  darkmode: false,
   loading: false,
   getParameters: {
     serviceKey:
@@ -21,29 +24,32 @@ const initialState = {
 };
 
 // thunk
-const getDust = createAsyncThunk('finedust/getDust', async (getParameters) => {
-  getDustRequest();
-  try {
-    const res = axios.get(
-      'B552584/ArpltnInforInqireSvc/getCtprvnRltmMesureDnsty',
-      { params: getParameters },
-    );
-    getDustSuccess(res.data.response.body);
-  } catch (error) {
-    getDustError(error);
-  }
-});
+export const getDust = createAsyncThunk(
+  'finedust/getDust',
+  async (getParameters) => {
+    // const res = axios.get(
+    //   'B552584/ArpltnInforInqireSvc/getCtprvnRltmMesureDnsty',
+    //   { params: getParameters },
+    // );
+    const res = dustData;
+    return res.response.body;
+  },
+);
 
+// reducer
 export const dustSlice = createSlice({
   name: 'finedust',
   initialState,
   reducers: {
+    darkTheme: (state, action) => {
+      state.darkmode = action.payload;
+    },
     getSidoName: (state, action) => {
       state.getParameters.sidoName = action.payload.sidoName;
     },
     addLiked: (state, action) => {
       const like = state.body.item.filter(
-        (item = item.stationName === action.payload.stationName),
+        (item) => item.stationName === action.payload.stationName,
       );
       state.liked = [...state.liked, like];
     },
@@ -69,7 +75,5 @@ export const dustSlice = createSlice({
   },
 });
 
-export const { getDustRequest, getDustSuccess, getDustError } =
+export const { darkTheme, getDustRequest, getDustSuccess, getDustError } =
   dustSlice.actions;
-
-export default dustSlice.reducer;
