@@ -1,8 +1,22 @@
-import React from 'react';
-import { StarOutline } from 'antd-mobile-icons';
+import React, { useEffect, useState } from 'react';
+import { StarOutline, StarFill } from 'antd-mobile-icons';
 import styles from '../scss/Regions.module.scss';
+import { useDispatch } from 'react-redux';
+import { addLiked, deleteLiked } from '../redux/dustSlice';
 
-function RegioinCard({ dustdata }) {
+function RegioinCard({ dustdata, fillstar }) {
+  const [liked, setLiked] = useState(false);
+  const dispatch = useDispatch();
+
+  const addLike = () => {
+    setLiked(!liked);
+    dispatch(addLiked(dustdata));
+  };
+  const deleteLike = () => {
+    setLiked(!liked);
+    dispatch(deleteLiked(stationName));
+  };
+
   const stationName = dustdata.stationName;
   const sidoName = dustdata.sidoName;
   const pm10Grade = Number(dustdata.pm10Grade);
@@ -19,9 +33,10 @@ function RegioinCard({ dustdata }) {
   const color = finedustGradeColor[pm10Grade];
 
   const finedustValue = dustdata.pm10Value;
-  const dataTime = dustdata.dataTime.split(' ');
+  const dataTime = dustdata.dataTime && dustdata.dataTime.split(' ');
+  if (!dataTime) return;
   const date = dataTime[0];
-  const ymd = date.split('-');
+  const ymd = date ? date.split('-') : 'no data';
   const year = ymd[0] + '년 ';
   const month = ymd[1][0] === '0' ? ymd[1][1] + '월 ' : ymd[1] + '월 ';
   const day = ymd[2][0] === '0' ? ymd[2][1] + '일 ' : ymd[2] + '일 ';
@@ -38,17 +53,27 @@ function RegioinCard({ dustdata }) {
       </div>
       <div className={styles.finedustGrade}>
         <div style={{ color }}>
-          {finedustGrade ? finedustGrade[pm10Grade - 1] : 'no data'}
+          {pm10Grade ? finedustGrade[pm10Grade - 1] : 'no data'}
         </div>
       </div>
       <div className={styles.detailContainer}>
         <div className={styles.finedustValue}>
           미세먼지 수치: {finedustValue}
         </div>
-        <div className={styles.measurementDate}>{measurementDate} 기준</div>
+        <div className={styles.measurementDate}>
+          {measurementDate ? measurementDate : 'no data'} 기준
+        </div>
       </div>
       <div className={styles.liked}>
-        <StarOutline />
+        {fillstar || liked ? (
+          <div onClick={deleteLike}>
+            <StarFill />
+          </div>
+        ) : (
+          <div onClick={addLike}>
+            <StarOutline />
+          </div>
+        )}
       </div>
     </div>
   );
