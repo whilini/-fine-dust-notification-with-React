@@ -1,6 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-import dustData from '../constants/dustData.json';
 
 const serviceKey = process.env.REACT_APP_API_KEY;
 
