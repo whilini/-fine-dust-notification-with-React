@@ -8,7 +8,7 @@ function Header() {
   const dispatch = useDispatch();
   return (
     <div className="header">
-      <div className="header__title">미세먼지 알리미</div>
+      <div className="header__title">알리Me세먼지</div>
       <Space className="header__check-box" align="center">
         <div>Dark Mode</div>
         <Switch
