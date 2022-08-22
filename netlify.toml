@@ -1,0 +1,5 @@
+[[redirects]]
+from = "/proxy/*"
+  to = "https://apis.data.go.kr/"  
+  status = 200
+  force = true

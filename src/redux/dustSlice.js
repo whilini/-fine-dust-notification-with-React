@@ -2,6 +2,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
 const serviceKey = process.env.REACT_APP_API_KEY;
+const PROXY = window.location.hostname === 'localhost' ? '' : '/proxy';
 
 const initialState = {
   darkmode: false,
@@ -29,7 +30,7 @@ export const getDust = createAsyncThunk(
     const state = getState().dustSlice;
     const params = state.getParameters;
     const { data } = await axios.get(
-      'B552584/ArpltnInforInqireSvc/getCtprvnRltmMesureDnsty',
+      `${PROXY}B552584/ArpltnInforInqireSvc/getCtprvnRltmMesureDnsty`,
       { params },
     );
     return data.response;
