@@ -1,19 +1,19 @@
 // AllRegions.jsx
 .skeletonContainer {
   .customSkeleton {
-    --width: 70vw;
-    --height: 150px;
+    --width: 350px;
+    --height: 165px;
     --border-radius: 8px;
-    margin: 20px 0;
+    margin: 25px 0;
   }
 }
 
 .allRegions {
+  width: 420px;
   position: relative;
   display: flex;
   justify-content: center;
   .totalCount {
-    width: 100vw;
     font-size: 18px;
     position: absolute;
     top: 0;
@@ -22,8 +22,9 @@
   .cardContainer {
     position: absolute;
     top: 40px;
-    overflow: scroll;
-    height: calc(100vh - 210px);
+    overflow-y: scroll;
+    overflow-x: hidden;
+    height: calc(100vh - 260px);
     width: 100vw;
     justify-content: center;
     display: grid;
@@ -32,11 +33,11 @@
 
 // RegionCard.jsx
 .regionCard {
-  width: 80vw;
+  width: 350px;
   height: 165px;
-  background-color: orange;
+  background-color: #bfbfbf;
   color: #fff;
-  border-radius: 10px;
+  border-radius: 8px;
   position: relative;
   margin-bottom: 25px;
   .stationTitleGroup {
@@ -62,9 +63,9 @@
     justify-content: center;
     align-items: center;
     background-color: #fff;
-    color: orange;
+    color: #bfbfbf;
     font-size: 25px;
-    border-radius: 10px;
+    border-radius: 8px;
     margin-top: 54px;
     padding: 6px 15px;
     font-family: 'UhBeeSe_hyun';

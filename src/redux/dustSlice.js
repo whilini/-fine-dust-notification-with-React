@@ -33,7 +33,7 @@ export const getDust = createAsyncThunk(
       'B552584/ArpltnInforInqireSvc/getCtprvnRltmMesureDnsty',
       { params },
     );
-    return data.response.body;
+    return data.response;
   },
 );
 
@@ -49,15 +49,14 @@ export const dustSlice = createSlice({
       state.getParameters.sidoName = action.payload;
     },
     addLiked: (state, action) => {
-      const like = state.body.item.filter(
-        (item) => item.stationName === action.payload.stationName,
-      );
-      state.liked = [...state.liked, like];
+      state.liked = [...state.liked, action.payload];
+      console.log(state.liked);
     },
     deleteLiked: (state, action) => {
       state.liked = state.liked.filter(
-        (item) => item.stationName !== action.payload.stationName,
+        (item) => item.stationName !== action.payload,
       );
+      console.log(state.liked);
     },
   },
   extraReducers: (builder) => {
@@ -66,13 +65,12 @@ export const dustSlice = createSlice({
     });
     builder.addCase(getDust.fulfilled, (state, action) => {
       state.loading = false;
-      console.log('success', action.payload);
-      state.body = action.payload;
+      state.body = action.payload.body;
     });
     builder.addCase(getDust.rejected, (state, action) => {
       state.loading = false;
       state.body = [];
-      state.error = action.error.message;
+      state.error = action.header.resultMsg;
     });
   },
 });
