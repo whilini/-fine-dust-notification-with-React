@@ -50,13 +50,11 @@ export const dustSlice = createSlice({
     },
     addLiked: (state, action) => {
       state.liked = [...state.liked, action.payload];
-      console.log(state.liked);
     },
     deleteLiked: (state, action) => {
       state.liked = state.liked.filter(
         (item) => item.stationName !== action.payload,
       );
-      console.log(state.liked);
     },
   },
   extraReducers: (builder) => {

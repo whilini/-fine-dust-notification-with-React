@@ -6,7 +6,7 @@ import styles from '../scss/Regions.module.scss';
 
 function Liked() {
   const liked = useSelector((state) => state.dustSlice).liked;
-  console.log(liked);
+
   return (
     <div className={styles.allRegions}>
       {liked.length ? (

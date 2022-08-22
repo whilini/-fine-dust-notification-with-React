@@ -58,7 +58,6 @@ function AllRegions() {
         style={{ width: 375, margin: '0 auto' }}
         onConfirm={(val, extend) => {
           setValue(val);
-          console.log('sido', val, extend.items);
         }}
         onClose={() => {
           setVisible(false);

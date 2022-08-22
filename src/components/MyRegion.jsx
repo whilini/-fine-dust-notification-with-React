@@ -14,7 +14,6 @@ function MyRegion() {
   const [value, setValue] = useState(['서울', '광진구']);
   let response = [];
   let detailOptions = [];
-  const ref = useRef(null);
 
   useEffect(() => {
     dispatch(getSidoName(value[0]));
@@ -41,6 +40,7 @@ function MyRegion() {
       });
     }
   }, [data]);
+
   const [selected, setSelected] = useState({});
   const selectRegion = () => {
     data.map((item) => {
@@ -51,7 +51,6 @@ function MyRegion() {
   };
   useEffect(() => {
     selectRegion();
-    console.log(selected);
   }, [value]);
 
   const [visible, setVisible] = useState(false);
@@ -89,6 +88,9 @@ function MyRegion() {
           confirmText="선택"
           placeholder="지역 선택"
           style={{ width: 375, margin: '0 auto' }}
+          onSelect={(v) => {
+            setValue(v);
+          }}
           onConfirm={(val, extend) => {
             setValue(val);
             selectRegion(val[0]);

@@ -1,5 +1,5 @@
-import { AutoCenter, Space, Switch } from 'antd-mobile';
-import React, { useState, useLayoutEffect } from 'react';
+import { Space, Switch } from 'antd-mobile';
+import React from 'react';
 import { useDispatch } from 'react-redux';
 import { darkTheme } from '../redux/dustSlice';
 import '../scss/Header.scss';
