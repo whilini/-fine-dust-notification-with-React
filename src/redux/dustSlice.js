@@ -30,7 +30,7 @@ export const getDust = createAsyncThunk(
     const state = getState().dustSlice;
     const params = state.getParameters;
     const { data } = await axios.get(
-      `${PROXY}B552584/ArpltnInforInqireSvc/getCtprvnRltmMesureDnsty`,
+      `${PROXY}/B552584/ArpltnInforInqireSvc/getCtprvnRltmMesureDnsty`,
       { params },
     );
     return data.response;
