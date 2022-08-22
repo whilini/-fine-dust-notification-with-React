@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { StarOutline, StarFill } from 'antd-mobile-icons';
 import styles from '../scss/Regions.module.scss';
 import { useDispatch } from 'react-redux';
