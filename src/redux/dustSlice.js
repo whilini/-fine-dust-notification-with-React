@@ -1,14 +1,14 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-
 import dustData from '../constants/dustData.json';
+
+const serviceKey = process.env.REACT_APP_API_KEY;
 
 const initialState = {
   darkmode: false,
   loading: false,
   getParameters: {
-    serviceKey:
-      '아까 위에서 일반 인증키 (Encoding) 이라고 되어있던 부분을 여기 입력해주세요.',
+    serviceKey,
     returnType: 'json',
     numOfRows: '100',
     pageNo: '1',
@@ -26,13 +26,14 @@ const initialState = {
 // thunk
 export const getDust = createAsyncThunk(
   'finedust/getDust',
-  async (getParameters) => {
-    // const res = axios.get(
-    //   'B552584/ArpltnInforInqireSvc/getCtprvnRltmMesureDnsty',
-    //   { params: getParameters },
-    // );
-    const res = dustData;
-    return res.response.body;
+  async (_, { getState, dispatch }) => {
+    const state = getState().dustSlice;
+    const params = state.getParameters;
+    const { data } = await axios.get(
+      'B552584/ArpltnInforInqireSvc/getCtprvnRltmMesureDnsty',
+      { params },
+    );
+    return data.response.body;
   },
 );
 
@@ -45,7 +46,7 @@ export const dustSlice = createSlice({
       state.darkmode = action.payload;
     },
     getSidoName: (state, action) => {
-      state.getParameters.sidoName = action.payload.sidoName;
+      state.getParameters.sidoName = action.payload;
     },
     addLiked: (state, action) => {
       const like = state.body.item.filter(
@@ -65,6 +66,7 @@ export const dustSlice = createSlice({
     });
     builder.addCase(getDust.fulfilled, (state, action) => {
       state.loading = false;
+      console.log('success', action.payload);
       state.body = action.payload;
     });
     builder.addCase(getDust.rejected, (state, action) => {
@@ -75,5 +77,5 @@ export const dustSlice = createSlice({
   },
 });
 
-export const { darkTheme, getDustRequest, getDustSuccess, getDustError } =
+export const { darkTheme, getSidoName, addLiked, deleteLiked } =
   dustSlice.actions;
