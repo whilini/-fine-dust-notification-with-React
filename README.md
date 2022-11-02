@@ -49,17 +49,22 @@ $ npm run start
 
 ### 구현된 화면
 main
+<br />
 ![main](https://user-images.githubusercontent.com/98644969/199523511-251e3796-a664-4a6a-ac49-ae95f26b7322.png)
 
 my region
+<br />
 ![image](https://user-images.githubusercontent.com/98644969/199526182-4513898e-e624-4b17-b976-d2213f99314e.png)
 
 favorite
+<br />
 ![image](https://user-images.githubusercontent.com/98644969/199526786-013ff686-775f-4c2e-87be-6f2aa3eeaccb.png)
 
 select region
+<br />
 ![image](https://user-images.githubusercontent.com/98644969/199526977-2bd77040-5f38-4c89-adfd-103b630a4668.png)
 
 dark mode
+<br />
 ![image](https://user-images.githubusercontent.com/98644969/199527290-d47ab05d-c532-408a-91b8-7d3c1ff78358.png)
 
